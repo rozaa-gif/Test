@@ -2,21 +2,21 @@
    Peppharma – Base & tokens
    =========================== */
 :root {
-  --bg: #f7f9f8;
+  --bg: #f6f9fc;
   --surface: #ffffff;
-  --text: #1f2a24;
-  --muted: #5c6b63;
-  --border: #e3e9e5;
-  --primary: #163a2e;
-  --accent: #2f9e6e;
-  --accent-dark: #1f7a53;
-  --accent-light: #e7f5ee;
+  --text: #1c2733;
+  --muted: #5b6b7a;
+  --border: #e1e8ef;
+  --primary: #0b3350;
+  --accent: #2f7de1;
+  --accent-dark: #1f5fb8;
+  --accent-light: #e8f1fc;
   --warning-bg: #fff7e6;
   --warning-border: #f0d68c;
   --radius: 12px;
   --radius-sm: 8px;
-  --shadow: 0 2px 12px rgba(22, 58, 46, 0.08);
-  --shadow-lg: 0 10px 30px rgba(22, 58, 46, 0.12);
+  --shadow: 0 2px 12px rgba(11, 51, 80, 0.08);
+  --shadow-lg: 0 10px 30px rgba(11, 51, 80, 0.12);
   --container: 1180px;
   font-size: 16px;
 }
@@ -100,7 +100,7 @@ p { margin: 0 0 1em; }
    =========================== */
 .top-bar {
   background: var(--primary);
-  color: #e9f3ee;
+  color: #eaf2fb;
   font-size: 0.82rem;
 }
 .top-bar-inner {
@@ -120,7 +120,7 @@ p { margin: 0 0 1em; }
 .lang-btn {
   background: transparent;
   border: none;
-  color: #cfe4da;
+  color: #c9ddf5;
   font-weight: 700;
   font-size: 0.82rem;
   cursor: pointer;
@@ -129,7 +129,7 @@ p { margin: 0 0 1em; }
 }
 .lang-btn.active,
 .lang-btn:hover { color: #fff; text-decoration: underline; }
-.lang-sep { color: #567366; }
+.lang-sep { color: #4f7396; }
 
 /* ===========================
    Main nav
@@ -208,7 +208,7 @@ p { margin: 0 0 1em; }
    Hero
    =========================== */
 .hero {
-  background: linear-gradient(135deg, var(--accent-light) 0%, #f2fbf6 55%, #ffffff 100%);
+  background: linear-gradient(135deg, var(--accent-light) 0%, #eef5fc 55%, #ffffff 100%);
   padding: 3.5rem 0;
 }
 .hero-inner {
@@ -468,7 +468,7 @@ p { margin: 0 0 1em; }
 
 .guarantee-card {
   background: var(--accent-light);
-  border: 1px solid #bfe4d1;
+  border: 1px solid #bcd9f5;
   border-radius: var(--radius);
   padding: 1.75rem;
   display: flex;
@@ -517,7 +517,7 @@ p { margin: 0 0 1em; }
    =========================== */
 footer.site-footer {
   background: var(--primary);
-  color: #cfe4da;
+  color: #c9ddf5;
   margin-top: 3rem;
 }
 .footer-grid {
@@ -527,7 +527,7 @@ footer.site-footer {
   padding: 3rem 1.25rem 2rem;
 }
 .footer-col h4 { color: #fff; font-size: 0.95rem; margin-bottom: 0.9rem; }
-.footer-col p, .footer-col a { color: #b9d4c7; font-size: 0.88rem; }
+.footer-col p, .footer-col a { color: #b8cfe6; font-size: 0.88rem; }
 .footer-col a { display: block; margin-bottom: 0.5rem; }
 .footer-col a:hover { color: #fff; }
 .footer-bottom {
@@ -535,7 +535,7 @@ footer.site-footer {
   padding: 1rem 1.25rem;
   font-size: 0.8rem;
   text-align: center;
-  color: #9db8ab;
+  color: #9bb6d1;
 }
 
 /* ===========================
