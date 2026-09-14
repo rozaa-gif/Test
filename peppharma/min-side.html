@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Min side – Peppharma</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <p class="top-message" data-i18n="top.freeShipping">Fri frakt i Norge ved kjøp over 799 kr</p>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="no">NO</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+  <div class="main-nav">
+    <div class="container main-nav-inner">
+      <a href="index.html" class="logo">Pepp<span>harma</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Meny">&#9776;</button>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" data-i18n="nav.home">Hjem</a>
+        <a href="produkter.html" data-i18n="nav.products">Produkter</a>
+        <a href="faq.html" data-i18n="nav.faq">Spørsmål og svar</a>
+        <a href="frakt-betaling.html" data-i18n="nav.shipping">Frakt &amp; betaling</a>
+        <a href="min-side.html" data-i18n="nav.account">Min side</a>
+        <a href="handlekurv.html" class="cart-link">🛒 <span id="cartCount">0</span></a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title" data-i18n="account.title">Min side</h1>
+      <p class="section-sub" data-i18n="account.sub">Logg inn for å se ordrehistorikk, eller opprett en ny konto.</p>
+
+      <div class="account-grid">
+        <div class="form-card">
+          <h2 data-i18n="account.loginTitle">Logg inn</h2>
+          <form id="loginForm">
+            <div class="form-group">
+              <label data-i18n="account.email">E-postadresse</label>
+              <input type="email" required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="account.password">Passord</label>
+              <input type="password" required>
+            </div>
+            <button type="submit" class="btn btn-block" data-i18n="account.loginSubmit">Logg inn</button>
+            <p class="form-note"><a href="#" data-i18n="account.forgot">Glemt passord?</a></p>
+          </form>
+        </div>
+
+        <div class="form-card">
+          <h2 data-i18n="account.registerTitle">Opprett konto</h2>
+          <form id="registerForm">
+            <div class="form-group">
+              <label data-i18n="account.name">Fullt navn</label>
+              <input type="text" required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="account.email">E-postadresse</label>
+              <input type="email" required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="account.password">Passord</label>
+              <input type="password" required>
+            </div>
+            <button type="submit" class="btn btn-block" data-i18n="account.registerSubmit">Opprett konto</button>
+          </form>
+        </div>
+      </div>
+      <p class="form-note" style="text-align:center; margin-top:1.5rem;" data-i18n="account.note">Dette er en demo-side. Ingen data blir lagret eller sendt til en server.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid container">
+    <div class="footer-col">
+      <h4 data-i18n="footer.aboutTitle">Om Peppharma</h4>
+      <p data-i18n="footer.aboutText">Peppharma leverer vitaminer, kosttilskudd og velværeprodukter av høy kvalitet, med rask levering i hele Norge og internasjonalt.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.linksTitle">Snarveier</h4>
+      <a href="produkter.html" data-i18n="nav.products">Produkter</a>
+      <a href="faq.html" data-i18n="nav.faq">Spørsmål og svar</a>
+      <a href="frakt-betaling.html" data-i18n="nav.shipping">Frakt &amp; betaling</a>
+      <a href="min-side.html" data-i18n="nav.account">Min side</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.contactTitle">Kontakt oss</h4>
+      <p data-i18n="footer.contactEmail">kontakt@peppharma.no</p>
+      <p data-i18n="footer.contactPhone">+47 000 00 000</p>
+      <p data-i18n="footer.contactHours">Man–fre 09–16</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 <span data-i18n="footer.rights">Peppharma. Alle rettigheter forbeholdt.</span></p>
+  </div>
+</footer>
+
+<div class="notification" id="notification"></div>
+
+<script src="js/i18n.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

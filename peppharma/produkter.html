@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produkter – Peppharma</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <p class="top-message" data-i18n="top.freeShipping">Fri frakt i Norge ved kjøp over 799 kr</p>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="no">NO</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+  <div class="main-nav">
+    <div class="container main-nav-inner">
+      <a href="index.html" class="logo">Pepp<span>harma</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Meny">&#9776;</button>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" data-i18n="nav.home">Hjem</a>
+        <a href="produkter.html" data-i18n="nav.products">Produkter</a>
+        <a href="faq.html" data-i18n="nav.faq">Spørsmål og svar</a>
+        <a href="frakt-betaling.html" data-i18n="nav.shipping">Frakt &amp; betaling</a>
+        <a href="min-side.html" data-i18n="nav.account">Min side</a>
+        <a href="handlekurv.html" class="cart-link">🛒 <span id="cartCount">0</span></a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title" data-i18n="products.title">Alle produkter</h1>
+      <p class="section-sub" data-i18n="products.sub">Vitaminer, kosttilskudd og velværeprodukter for en sunnere hverdag.</p>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all" data-i18n="products.filterAll">Alle</button>
+        <button class="filter-btn" data-filter="vitamins" data-i18n="products.filterVitamins">Vitaminer</button>
+        <button class="filter-btn" data-filter="protein" data-i18n="products.filterProtein">Protein</button>
+        <button class="filter-btn" data-filter="omega" data-i18n="products.filterOmega">Omega &amp; hjerte</button>
+        <button class="filter-btn" data-filter="wellness" data-i18n="products.filterWellness">Velvære</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid container">
+    <div class="footer-col">
+      <h4 data-i18n="footer.aboutTitle">Om Peppharma</h4>
+      <p data-i18n="footer.aboutText">Peppharma leverer vitaminer, kosttilskudd og velværeprodukter av høy kvalitet, med rask levering i hele Norge og internasjonalt.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.linksTitle">Snarveier</h4>
+      <a href="produkter.html" data-i18n="nav.products">Produkter</a>
+      <a href="faq.html" data-i18n="nav.faq">Spørsmål og svar</a>
+      <a href="frakt-betaling.html" data-i18n="nav.shipping">Frakt &amp; betaling</a>
+      <a href="min-side.html" data-i18n="nav.account">Min side</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.contactTitle">Kontakt oss</h4>
+      <p data-i18n="footer.contactEmail">kontakt@peppharma.no</p>
+      <p data-i18n="footer.contactPhone">+47 000 00 000</p>
+      <p data-i18n="footer.contactHours">Man–fre 09–16</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 <span data-i18n="footer.rights">Peppharma. Alle rettigheter forbeholdt.</span></p>
+  </div>
+</footer>
+
+<div class="notification" id="notification"></div>
+
+<script src="js/i18n.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
