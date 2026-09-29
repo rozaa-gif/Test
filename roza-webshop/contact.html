@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Contact | ROZA</title>
+  <meta name="description" content="Contact ROZA customer care.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body data-page="contact" data-title="title.contact">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol><li><a href="index.html" data-i18n="crumb.home"></a></li><li aria-current="page" data-i18n="nav.contact"></li></ol>
+        </nav>
+        <h1 data-i18n="nav.contact"></h1>
+        <p data-lang="en">We are here to help – with sizing, styling, orders or anything else.</p>
+        <p data-lang="nb">Vi er her for å hjelpe – med størrelser, styling, bestillinger eller noe annet.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <ul class="contact-details">
+          <li>
+            <strong data-lang="en">Customer care</strong><strong data-lang="nb">Kundeservice</strong>
+            <a href="mailto:hello@rozathelabel.com">hello@rozathelabel.com</a>
+          </li>
+          <li>
+            <strong data-lang="en">Opening hours</strong><strong data-lang="nb">Åpningstider</strong>
+            <span data-lang="en">Monday–Friday, 09:00–16:00 (CET). We reply within 1 working day.</span>
+            <span data-lang="nb">Mandag–fredag kl. 09.00–16.00. Vi svarer innen 1 virkedag.</span>
+          </li>
+          <li>
+            <strong data-lang="en">Company</strong><strong data-lang="nb">Selskap</strong>
+            ROZA [Company name AS]<br>Org. no. [000 000 000]<br>[Street address], [Postcode] [City], Norway
+          </li>
+          <li>
+            <strong data-i18n="footer.follow"></strong>
+            <a href="https://www.instagram.com/rozathelabel/" target="_blank" rel="noopener noreferrer">Instagram @rozathelabel</a><br>
+            <a href="https://www.tiktok.com/@rozathelabel" target="_blank" rel="noopener noreferrer">TikTok @rozathelabel</a>
+          </li>
+          <li>
+            <strong data-i18n="nav.faq"></strong>
+            <a class="link-underline" href="faq.html" data-lang="en">Find quick answers</a>
+            <a class="link-underline" href="faq.html" data-lang="nb">Finn raske svar</a>
+          </li>
+        </ul>
+
+        <form class="form" novalidate data-form="contact">
+          <div class="form-row">
+            <div class="field">
+              <label for="ct-name" data-i18n="contact.name"></label>
+              <input id="ct-name" name="name" type="text" autocomplete="name" required maxlength="100">
+              <p class="field-error" data-error-for="ct-name"></p>
+            </div>
+            <div class="field">
+              <label for="ct-email" data-i18n="form.email"></label>
+              <input id="ct-email" name="email" type="email" autocomplete="email" required maxlength="254">
+              <p class="field-error" data-error-for="ct-email"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ct-order" data-i18n="contact.order"></label>
+            <input id="ct-order" name="order" type="text" maxlength="30" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="ct-message" data-i18n="contact.message"></label>
+            <textarea id="ct-message" name="message" required maxlength="3000"></textarea>
+            <p class="field-error" data-error-for="ct-message"></p>
+          </div>
+          <p class="secure-note">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="10.5" width="14" height="9.5" rx="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+            <span data-i18n-html="contact.consent"></span>
+          </p>
+          <button class="btn btn--dark btn--lg" type="submit" data-i18n="contact.send"></button>
+          <p class="form-status" data-form-status role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

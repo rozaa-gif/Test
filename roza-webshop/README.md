@@ -1,157 +1,73 @@
-# 🌹 ROZA - Luxury Fashion Online Web Shop
+# ROZA – rozathelabel.com
 
-Welcome to **ROZA** - A fully functional, professionally designed luxury fashion e-commerce platform.
+Design preview of the ROZA online shop: classy, elegant and confident blazers, suits, office dresses and after-work outfits for women 25+.
 
-## 📋 Domain
-**Website:** rozathelable.com
+This is a clickable prototype for agreeing on the look, structure and content. At launch it becomes a custom Shopify theme, so that Shopify handles checkout, payments, customer accounts and data storage securely.
 
-## ✨ Features
+## Open it
 
-### 🛍️ Shopping Experience
-- **Product Catalog**: 8 premium fashion items across multiple categories
-- **Category Filtering**: Browse by Blazers, Dresses, Trousers, and Accessories
-- **Search Functionality**: Real-time product search
-- **Product Cards**: Beautiful card layouts with images, descriptions, and prices
+Open `index.html` in a browser, or serve the folder locally:
 
-### 🛒 Shopping Cart
-- **Add to Cart**: One-click product addition
-- **Cart Management**: Adjust quantities, remove items
-- **Cart Persistence**: Your cart saves automatically
-- **Real-time Updates**: Instant subtotal and shipping calculations
+```bash
+cd roza-webshop
+python3 -m http.server 8000   # then visit http://localhost:8000
+```
 
-### 💳 Checkout & Payment
-- **Secure Checkout Form**: Shipping and payment information collection
-- **Shipping Options**: 
-  - Standard Shipping: $15
-  - Free Shipping: Orders over $200
-- **Order Confirmation**: Purchase completion notifications
+## Pages
 
-### 🌍 Multi-Language Support
-- **English** (Default)
-- **Spanish** (Español)
-- **French** (Français)
+| Page | File |
+|---|---|
+| Home | `index.html` |
+| Shop (New In, All, Blazers, Suits, Office Dresses, Skirts, Trousers, Tops & Blouses, After Work) | `shop.html?cat=…` |
+| Product | `product.html?id=…` |
+| About | `about.html` |
+| FAQ | `faq.html` |
+| Shipping & Returns | `shipping-returns.html` |
+| Size Guide | `size-guide.html` |
+| Contact | `contact.html` |
+| Sign in / Create account / Reset password | `account.html` |
+| Privacy Policy, Cookie Policy, Terms of Sale | `privacy.html`, `cookies.html`, `terms.html` |
 
-### 📱 Responsive Design
-- **Mobile-Optimized**: Perfect on phones, tablets, and desktops
-- **Modern UI**: Clean, professional luxury aesthetic
-- **Fast Loading**: Optimized for all devices
+## Features
 
-### 📬 Newsletter Subscription
-- **Email Signup**: Exclusive offers and new collections
-- **Easy Subscription**: Quick email capture
+- **Brand look:** black, soft nude and white, with self-hosted Cormorant Garamond and Jost fonts.
+- **Languages:** English and Norwegian. The site picks one from the browser language and the shopper can switch in the header.
+- **Currencies:** NOK (default), SEK, DKK and EUR. The rates here are indicative only; Shopify Markets sets the real prices.
+- **Navigation:** a mega menu on desktop and a slide-in menu on mobile, plus search, a shopping bag drawer with a free-shipping progress bar, and filters and sorting on the shop page.
+- **Social media:** Instagram and TikTok links in the header menu, footer, home page and contact page (placeholder handle `@rozathelabel`).
+- **Accessibility:** keyboard navigation, focus handling in dialogs, skip link, labelled forms and a reduced-motion setting.
 
-## 📁 File Structure
+## Privacy and security (GDPR)
+
+- **Cookie consent:** "Accept all" and "Only necessary" are equally easy to choose. There are separate choices for statistics and marketing, consent lasts 12 months, and a "Cookie settings" link in the footer reopens the choices. Optional scripts may only be added in `loadOptionalScripts()` in `assets/js/app.js`, which runs after the visitor has given consent.
+- **No third-party requests:** no Google Fonts, trackers or embedded feeds, so no visitor IP addresses are passed to other companies without consent.
+- **Content Security Policy** on every page: scripts, styles and fonts load only from this site, and there is no inline script.
+- **Safe handling of text:** anything the visitor types (search words, web-address parameters) is shown as plain text or checked against an allowed list, never inserted as HTML.
+- **Forms:** newsletter and account sign-up require explicit opt-in (the boxes are not pre-ticked), with a link to the privacy policy. **In this preview, forms send and store nothing**; at launch they post to Shopify over HTTPS.
+- **Local storage** holds only the bag, language, currency and cookie choice. No personal data is kept there.
+- **Legal pages:** privacy policy, cookie policy and terms of sale in English and Norwegian, based on the GDPR, the Norwegian Right of Withdrawal Act (angrerettloven) and the Consumer Purchases Act (forbrukerkjøpsloven). These are templates: fill in the `[bracketed]` details and have them reviewed before launch.
+
+## Before launch (checklist)
+
+- [ ] Replace the placeholder illustrations with product photos
+- [ ] Confirm the Instagram and TikTok handles
+- [ ] Fill in the company name, org. no. and address; confirm shipping prices, carriers and delivery times
+- [ ] Convert the design into a Shopify theme (Liquid) and connect the products, customer accounts and checkout
+- [ ] Set up Shopify Markets (NOK/SEK/DKK/EUR) and the payment methods (Klarna, Vipps, cards, Apple Pay)
+- [ ] Turn on two-factor login for all Shopify staff accounts
+- [ ] Connect the domain **rozathelabel.com** with HTTPS
+- [ ] Have the legal texts reviewed
+
+## Structure
 
 ```
 roza-webshop/
-├── index.html      # Main HTML structure
-├── styles.css      # Complete styling
-├── script.js       # JavaScript functionality
-└── README.md       # This file
+├── *.html                 pages
+└── assets/
+    ├── css/styles.css     design system and layout
+    ├── js/i18n.js         EN/NO interface text
+    ├── js/products.js     product catalogue and placeholder illustrations
+    ├── js/app.js          header/footer, language, currency, bag, consent, forms, pages
+    ├── fonts/             self-hosted fonts (SIL Open Font License)
+    └── img/favicon.svg
 ```
-
-## 🚀 How to Use
-
-### 1. **Setup**
-- Upload all files to your web hosting
-- Point your domain `rozathelable.com` to the hosting
-
-### 2. **Customize Products**
-Edit the `products` array in `script.js`:
-
-```javascript
-const products = [
-    {
-        id: 1,
-        name: "Your Product Name",
-        category: "blazers", // or dresses, trousers, accessories
-        price: 299,
-        description: "Your product description",
-        image: "your-image-url"
-    }
-];
-```
-
-### 3. **Modify Translations**
-Add or update translations in the `translations` object in `script.js`:
-
-```javascript
-const translations = {
-    en: { /* English translations */ },
-    es: { /* Spanish translations */ },
-    fr: { /* French translations */ }
-};
-```
-
-### 4. **Customize Colors**
-Edit CSS variables in `styles.css`:
-
-```css
-:root {
-    --primary: #1a1a1a;      /* Main dark color */
-    --secondary: #f5f5f5;    /* Light background */
-    --accent: #d4af37;       /* Gold accent */
-    --text: #333;
-    --light-text: #666;
-}
-```
-
-## 🎨 Design Features
-
-- **Luxury Aesthetic**: Minimalist, elegant design
-- **Color Scheme**: Dark primary with gold accents
-- **Typography**: Professional serif and sans-serif fonts
-- **Spacing**: Generous whitespace for premium feel
-- **Hover Effects**: Smooth transitions and interactions
-
-## 📊 Product Categories
-
-1. **Blazers**: Structured tailoring pieces
-2. **Dresses**: Evening and everyday wear
-3. **Trousers**: Premium bottoms
-4. **Accessories**: Scarves, belts, and more
-
-## 💾 Data Storage
-
-- **Cart Persistence**: Uses browser's localStorage
-- **No Backend Required**: Pure frontend functionality
-- **Real-time Updates**: Instant calculations
-
-## 🔒 Security Notes
-
-- **Payment Form**: Currently frontend-only (add payment gateway for live deployment)
-- **Recommended**: Integrate with Stripe, PayPal, or similar for real transactions
-- **HTTPS**: Always use SSL/TLS on production
-
-## 📈 Future Enhancements
-
-- Payment gateway integration (Stripe, PayPal)
-- User accounts and order history
-- Admin dashboard for product management
-- Inventory management
-- Email notifications
-- Analytics tracking
-
-## 🌐 Browser Compatibility
-
-- Chrome ✅
-- Firefox ✅
-- Safari ✅
-- Edge ✅
-- Mobile browsers ✅
-
-## 📞 Support
-
-For customization or issues, ensure:
-1. All three files (HTML, CSS, JS) are in the same directory
-2. Domain is properly configured
-3. JavaScript is enabled in browsers
-4. Images are accessible (using external URLs)
-
-## 📝 License
-
-ROZA © 2026. All rights reserved.
-
----
-
-**Built with ❤️ for luxury fashion**

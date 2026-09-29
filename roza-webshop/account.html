@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex">
+  <title>Sign in | ROZA</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body data-page="account" data-title="title.account">
+  <div id="site-header"></div>
+
+  <main id="main" class="account">
+    <div class="tile tile--nude account-visual" data-art="blazer"></div>
+
+    <div class="account-panel">
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" id="tab-signin" aria-controls="view-signin" data-tab="signin" data-i18n="acc.signInTitle"></button>
+        <button type="button" role="tab" id="tab-create" aria-controls="view-create" data-tab="create" data-i18n="acc.createTitle"></button>
+      </div>
+
+      <!-- Sign in -->
+      <section id="view-signin" role="tabpanel" aria-labelledby="tab-signin" data-view="signin">
+        <h1 data-i18n="acc.welcome"></h1>
+        <p class="lead" data-i18n="acc.signInText"></p>
+        <form class="form" novalidate data-form="signin">
+          <div class="field">
+            <label for="si-email" data-i18n="form.email"></label>
+            <input id="si-email" name="email" type="email" autocomplete="email" required maxlength="254">
+            <p class="field-error" data-error-for="si-email"></p>
+          </div>
+          <div class="field">
+            <label for="si-password" data-i18n="form.password"></label>
+            <div class="password-wrap">
+              <input id="si-password" name="password" type="password" autocomplete="current-password" required maxlength="128">
+              <button type="button" data-toggle-pw="si-password" aria-pressed="false" data-i18n="acc.showPw"></button>
+            </div>
+            <p class="field-error" data-error-for="si-password"></p>
+          </div>
+          <div class="link-row">
+            <a href="#reset" data-show-view="reset" data-i18n="acc.forgot"></a>
+          </div>
+          <button class="btn btn--dark btn--block btn--lg" type="submit" data-i18n="acc.signInTitle"></button>
+          <p class="form-status" data-form-status role="status"></p>
+        </form>
+      </section>
+
+      <!-- Create account -->
+      <section id="view-create" role="tabpanel" aria-labelledby="tab-create" data-view="create" hidden>
+        <h1 data-i18n="acc.createTitle"></h1>
+        <p class="lead" data-i18n="acc.createText"></p>
+        <form class="form" novalidate data-form="create">
+          <div class="form-row">
+            <div class="field">
+              <label for="ca-first" data-i18n="form.firstName"></label>
+              <input id="ca-first" name="first_name" type="text" autocomplete="given-name" required maxlength="60">
+              <p class="field-error" data-error-for="ca-first"></p>
+            </div>
+            <div class="field">
+              <label for="ca-last" data-i18n="form.lastName"></label>
+              <input id="ca-last" name="last_name" type="text" autocomplete="family-name" required maxlength="60">
+              <p class="field-error" data-error-for="ca-last"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ca-email" data-i18n="form.email"></label>
+            <input id="ca-email" name="email" type="email" autocomplete="email" required maxlength="254">
+            <p class="field-error" data-error-for="ca-email"></p>
+          </div>
+          <div class="field">
+            <label for="ca-password" data-i18n="form.password"></label>
+            <div class="password-wrap">
+              <input id="ca-password" name="password" type="password" autocomplete="new-password" required maxlength="128" data-password-rule aria-describedby="ca-password-hint">
+              <button type="button" data-toggle-pw="ca-password" aria-pressed="false" data-i18n="acc.showPw"></button>
+            </div>
+            <p class="field-hint" id="ca-password-hint" data-i18n="form.passwordRule"></p>
+            <p class="field-error" data-error-for="ca-password"></p>
+          </div>
+          <label class="checkbox"><input type="checkbox" id="ca-terms" name="accepts_terms" required><span data-i18n-html="acc.terms"></span></label>
+          <p class="field-error" data-error-for="ca-terms"></p>
+          <label class="checkbox"><input type="checkbox" id="ca-news" name="accepts_marketing"><span data-i18n="acc.newsletter"></span></label>
+          <button class="btn btn--dark btn--block btn--lg" type="submit" data-i18n="acc.createTitle"></button>
+          <p class="form-status" data-form-status role="status"></p>
+        </form>
+      </section>
+
+      <!-- Reset password -->
+      <section data-view="reset" hidden>
+        <h1 data-i18n="acc.resetTitle"></h1>
+        <p class="lead" data-i18n="acc.resetText"></p>
+        <form class="form" novalidate data-form="reset">
+          <div class="field">
+            <label for="rp-email" data-i18n="form.email"></label>
+            <input id="rp-email" name="email" type="email" autocomplete="email" required maxlength="254">
+            <p class="field-error" data-error-for="rp-email"></p>
+          </div>
+          <button class="btn btn--dark btn--block btn--lg" type="submit" data-i18n="acc.resetBtn"></button>
+          <p class="form-status" data-form-status role="status"></p>
+          <div class="link-row"><a href="#signin" data-show-view="signin" data-i18n="acc.back"></a></div>
+        </form>
+      </section>
+
+      <p class="secure-note">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="10.5" width="14" height="9.5" rx="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+        <span data-i18n-html="acc.secure"></span>
+      </p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Shop | ROZA</title>
+  <meta name="description" content="Shop ROZA blazers, suits, office dresses, skirts, trousers, blouses and after-work outfits.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body data-page="shop" data-title="title.shop">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html" data-i18n="crumb.home"></a></li>
+            <li><a href="shop.html?cat=all" data-i18n="nav.shop"></a></li>
+            <li aria-current="page" id="crumb-current"></li>
+          </ol>
+        </nav>
+        <h1 id="shop-title"></h1>
+        <ul class="chips" id="cat-chips"></ul>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="toolbar">
+        <div class="filters">
+          <div class="select-field">
+            <label for="filter-size" data-i18n="filter.size"></label>
+            <select id="filter-size"></select>
+          </div>
+          <div class="select-field">
+            <label for="filter-color" data-i18n="filter.colour"></label>
+            <select id="filter-color"></select>
+          </div>
+          <div class="select-field">
+            <label for="filter-sort" data-i18n="sort.label"></label>
+            <select id="filter-sort"></select>
+          </div>
+        </div>
+        <div class="toolbar-right">
+          <p class="muted small" id="shop-count" aria-live="polite"></p>
+          <button type="button" class="link-btn small" id="shop-clear" data-i18n="shop.clear"></button>
+        </div>
+      </div>
+
+      <div class="grid grid--4" id="shop-grid"></div>
+      <div class="shop-empty" id="shop-empty" hidden>
+        <p data-i18n="shop.none"></p>
+        <a class="btn btn--dark" href="shop.html?cat=all" data-i18n="nav.shopAll"></a>
+      </div>
+      <div class="section"></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
