@@ -167,7 +167,7 @@
 
       /* Mobile menu */
       '<div class="panel drawer drawer--left" id="mobile-menu" role="dialog" aria-modal="true" data-i18n-aria="nav.menu" hidden>' +
-      '<div class="drawer-head"><span class="logo logo--small"><span class="logo-word">ROZA</span></span>' +
+      '<div class="drawer-head"><a class="logo logo--small" href="index.html" aria-label="ROZA"><span class="logo-word">ROZA</span></a>' +
       '<button type="button" class="icon-btn" data-close data-i18n-aria="nav.close">' + icon("close") + "</button></div>" +
       '<nav class="drawer-body mobile-nav" aria-label="Mobile">' +
       '<details open><summary><span data-i18n="nav.shop"></span>' + icon("chevron") + "</summary><ul>" +
@@ -233,7 +233,7 @@
       '<li><a href="shipping-returns.html" data-i18n="nav.shipping"></a></li>' +
       '<li><a href="size-guide.html" data-i18n="nav.sizeGuide"></a></li>' +
       '<li><a href="contact.html" data-i18n="nav.contact"></a></li></ul></div>' +
-      '<div><h3 class="footer-heading">ROZA</h3><ul>' +
+      '<div><h3 class="footer-heading"><a href="index.html">ROZA</a></h3><ul>' +
       '<li><a href="about.html" data-i18n="nav.about"></a></li>' +
       '<li><a href="account.html" data-i18n="nav.account"></a></li>' +
       '<li><a href="' + SOCIAL.instagram + '" target="_blank" rel="noopener noreferrer">Instagram</a></li>' +
