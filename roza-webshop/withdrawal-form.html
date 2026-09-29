@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Withdrawal form | ROZA</title>
+  <meta name="description" content="ROZA standard withdrawal form – 14-day right of withdrawal.">
+  <link rel="canonical" href="https://rozathelabel.com/withdrawal-form.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ROZA">
+  <meta property="og:title" content="Withdrawal form | ROZA">
+  <meta property="og:description" content="ROZA standard withdrawal form – 14-day right of withdrawal.">
+  <meta property="og:url" content="https://rozathelabel.com/withdrawal-form.html">
+  <meta property="og:image" content="https://rozathelabel.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body data-page="withdrawal" data-title="title.withdrawal">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="index.html" data-i18n="crumb.home"></a></li><li aria-current="page" data-i18n="nav.withdrawal"></li></ol></nav>
+        <h1 data-i18n="nav.withdrawal"></h1>
+        <p><span data-lang="en">Standard form for using your right of withdrawal (Right of Withdrawal Act / EU Consumer Rights Directive).</span><span data-lang="nb">Standardskjema for bruk av angreretten (angrerettloven).</span></p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--form">
+        <div class="prose no-print">
+          <p><span data-lang="en">You have 14 days from the day you receive the items to withdraw from the purchase – no reason needed. It is enough to send us a clear message before the deadline. You can use this form, our <a href='returns.html'>returns portal</a>, or email hello@rozathelabel.com.</span><span data-lang="nb">Du har 14 dager fra du mottar varene til å gå fra kjøpet – uten å oppgi grunn. Det er nok å gi oss en tydelig melding før fristen går ut. Du kan bruke dette skjemaet, <a href='returns.html'>returportalen</a> eller sende e-post til hello@rozathelabel.com.</span></p>
+        </div>
+
+        <form class="form withdrawal" novalidate data-form="withdrawal">
+          <div class="wd-to">
+            <p><strong><span data-lang="en">To:</span><span data-lang="nb">Til:</span></strong> ROZA AS, Org.nr. [000 000 000], [adresse], Norge · hello@rozathelabel.com</p>
+            <p><span data-lang="en">I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract of sale of the following goods:</span><span data-lang="nb">Jeg/vi (*) underretter herved om at jeg/vi (*) ønsker å gå fra min/vår (*) avtale om kjøp av følgende varer:</span></p>
+          </div>
+          <div class="field"><label for="wd-items"><span data-lang="en">Items (name, size, order number)</span><span data-lang="nb">Varer (navn, størrelse, ordrenummer)</span></label>
+            <textarea id="wd-items" name="items" required maxlength="1000"></textarea><p class="field-error" data-error-for="wd-items"></p></div>
+          <div class="form-row">
+            <div class="field"><label for="wd-ordered"><span data-lang="en">Ordered on</span><span data-lang="nb">Bestilt den</span></label>
+              <input id="wd-ordered" name="ordered" type="date" required><p class="field-error" data-error-for="wd-ordered"></p></div>
+            <div class="field"><label for="wd-received"><span data-lang="en">Received on</span><span data-lang="nb">Mottatt den</span></label>
+              <input id="wd-received" name="received" type="date" required><p class="field-error" data-error-for="wd-received"></p></div>
+          </div>
+          <div class="field"><label for="wd-name"><span data-lang="en">Name of consumer(s)</span><span data-lang="nb">Forbrukerens/forbrukernes navn</span></label>
+            <input id="wd-name" name="name" autocomplete="name" required maxlength="100"><p class="field-error" data-error-for="wd-name"></p></div>
+          <div class="field"><label for="wd-address"><span data-lang="en">Address of consumer(s)</span><span data-lang="nb">Forbrukerens/forbrukernes adresse</span></label>
+            <input id="wd-address" name="address" autocomplete="street-address" required maxlength="160"><p class="field-error" data-error-for="wd-address"></p></div>
+          <div class="field"><label for="wd-email" data-i18n="form.email"></label>
+            <input id="wd-email" name="email" type="email" autocomplete="email" required maxlength="254"><p class="field-error" data-error-for="wd-email"></p></div>
+          <div class="form-row">
+            <div class="field"><label for="wd-date"><span data-lang="en">Date</span><span data-lang="nb">Dato</span></label><input id="wd-date" name="date" type="date"></div>
+            <div class="field print-only"><label><span data-lang="en">Signature (only if this form is sent on paper)</span><span data-lang="nb">Underskrift (kun dersom skjemaet sendes på papir)</span></label><div class="sign-line"></div></div>
+          </div>
+          <p class="small muted">(*) <span data-lang="en">Delete as appropriate.</span><span data-lang="nb">Stryk det som ikke passer.</span></p>
+          <div class="order-actions no-print">
+            <button class="btn btn--dark btn--lg" type="submit"><span data-lang="en">Send withdrawal</span><span data-lang="nb">Send angreskjema</span></button>
+            <button class="btn btn--outline" type="button" data-print><span data-lang="en">Print / save as PDF</span><span data-lang="nb">Skriv ut / lagre som PDF</span></button>
+          </div>
+          <p class="form-status" data-form-status role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

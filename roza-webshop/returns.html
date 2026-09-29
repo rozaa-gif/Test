@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex">
+  <title>Returns portal | ROZA</title>
+  <meta name="description" content="Register a return with ROZA – 14-day right of withdrawal.">
+  <link rel="canonical" href="https://rozathelabel.com/returns.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ROZA">
+  <meta property="og:title" content="Returns portal | ROZA">
+  <meta property="og:description" content="Register a return with ROZA – 14-day right of withdrawal.">
+  <meta property="og:url" content="https://rozathelabel.com/returns.html">
+  <meta property="og:image" content="https://rozathelabel.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body data-page="returns" data-title="title.returns">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="index.html" data-i18n="crumb.home"></a></li><li aria-current="page" data-i18n="nav.returns"></li></ol></nav>
+        <h1 data-i18n="nav.returns"></h1>
+        <p><span data-lang="en">Register your return in a minute. You have 14 days from receiving your order.</span><span data-lang="nb">Registrer returen på et minutt. Du har 14 dager fra du mottok bestillingen.</span></p>
+        <ol class="steps"><li data-step-mark="find"><span data-lang="en">Find order</span><span data-lang="nb">Finn ordre</span></li><li data-step-mark="items"><span data-lang="en">Choose items</span><span data-lang="nb">Velg varer</span></li><li data-step-mark="done"><span data-lang="en">Return label</span><span data-lang="nb">Returetikett</span></li></ol>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--form">
+        <form id="ret-find" class="form" novalidate data-form="return-find">
+          <div class="field"><label for="ret-order"><span data-lang="en">Order number</span><span data-lang="nb">Ordrenummer</span></label>
+            <input id="ret-order" name="order" required maxlength="9" inputmode="numeric" data-rule="order" placeholder="1057">
+            <p class="field-hint"><span data-lang="en">Found in your order confirmation email.</span><span data-lang="nb">Står i ordrebekreftelsen på e-post.</span></p>
+            <p class="field-error" data-error-for="ret-order"></p></div>
+          <div class="field"><label for="ret-email" data-i18n="form.email"></label>
+            <input id="ret-email" name="email" type="email" autocomplete="email" required maxlength="254">
+            <p class="field-error" data-error-for="ret-email"></p></div>
+          <button class="btn btn--dark btn--lg" type="submit"><span data-lang="en">Find my order</span><span data-lang="nb">Finn bestillingen min</span></button>
+          <p class="small muted"><span data-lang="en">Preview: try any order number, e.g. 1057.</span><span data-lang="nb">Forhåndsvisning: prøv et hvilket som helst ordrenummer, f.eks. 1057.</span></p>
+        </form>
+
+        <form id="ret-items" class="form" novalidate data-form="return-items" hidden>
+          <h2 class="h3"><span data-lang="en">Order</span><span data-lang="nb">Ordre</span> <span id="ret-order-label"></span></h2>
+          <p class="muted"><span data-lang="en">Select the items you want to return.</span><span data-lang="nb">Velg varene du vil returnere.</span></p>
+          <ul id="ret-list" class="ret-list"></ul>
+          <p class="note-box" id="ret-faulty-hint" hidden data-i18n="ret.freeFaulty"></p>
+          <div class="note-box">
+            <strong><span data-lang="en">Refund</span><span data-lang="nb">Refusjon</span></strong><br>
+            <span data-lang="en">To your original payment method (Vipps, Apple Pay or card) within 14 days after we receive your return.</span><span data-lang="nb">Til opprinnelig betalingsmåte (Vipps, Apple Pay eller kort) innen 14 dager etter at vi har mottatt returen.</span>
+          </div>
+          <p class="field-error" id="ret-error" role="alert"></p>
+          <div class="order-actions">
+            <button class="btn btn--dark btn--lg" type="submit"><span data-lang="en">Create return</span><span data-lang="nb">Opprett retur</span></button>
+            <button class="btn btn--ghost" type="button" data-ret-back><span data-lang="en">Back</span><span data-lang="nb">Tilbake</span></button>
+          </div>
+        </form>
+
+        <div id="ret-done" hidden>
+          <p class="eyebrow"><span data-lang="en">Return registered</span><span data-lang="nb">Retur registrert</span></p>
+          <h2 class="h2"><span data-lang="en">Return number</span><span data-lang="nb">Returnummer</span> <span id="ret-number"></span></h2>
+          <ol class="howto">
+            <li><span data-lang="en">Download and print the return label – or show the QR code at the drop-off point.</span><span data-lang="nb">Last ned og skriv ut returetiketten – eller vis QR-koden på innleveringsstedet.</span></li>
+            <li><span data-lang="en">Pack the items unworn, unwashed and with tags attached.</span><span data-lang="nb">Pakk varene ubrukte, uvaskede og med merkelapper på.</span></li>
+            <li><span data-lang="en">Drop the parcel off at any Posten/Bring or PostNord point.</span><span data-lang="nb">Lever pakken på et Posten/Bring- eller PostNord-utleveringssted.</span></li>
+          </ol>
+          <p class="note-box" id="ret-paid-note"><span data-lang="en">Return shipping [79 kr] is deducted from your refund. [Confirm before launch.]</span><span data-lang="nb">Returfrakt [79 kr] trekkes fra refusjonen. [Bekreftes før lansering.]</span></p>
+          <p class="note-box" id="ret-faulty-note" hidden data-i18n="ret.freeFaulty"></p>
+          <div class="order-actions">
+            <button class="btn btn--dark" type="button" data-label><span data-lang="en">Download return label</span><span data-lang="nb">Last ned returetikett</span></button>
+            <a class="btn btn--ghost" href="index.html"><span data-lang="en">Back to ROZA</span><span data-lang="nb">Tilbake til ROZA</span></a>
+          </div>
+          <p class="small muted"><span data-lang="en">A confirmation with the label is also sent by email.</span><span data-lang="nb">En bekreftelse med etiketten sendes også på e-post.</span></p>
+        </div>
+
+        <p class="small muted ret-alt"><span data-lang="en">Prefer paper? Use our <a class="link-underline" href="withdrawal-form.html">withdrawal form</a>.</span><span data-lang="nb">Foretrekker du papir? Bruk <a class="link-underline" href="withdrawal-form.html">angreskjemaet</a>.</span></p>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

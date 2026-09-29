@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /checkout.html
+Disallow: /account.html
+Disallow: /my-account.html
+Disallow: /returns.html
+
+Sitemap: https://rozathelabel.com/sitemap.xml

@@ -27,6 +27,10 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 | Contact | `contact.html` |
 | Sign in / Create account / Reset password | `account.html` |
 | Privacy Policy, Cookie Policy, Terms of Sale | `privacy.html`, `cookies.html`, `terms.html` |
+| Checkout (Vipps, Apple Pay, card) | `checkout.html` |
+| My account (orders & tracking, addresses, download/delete my data) | `my-account.html` |
+| Returns portal | `returns.html` |
+| Withdrawal form (angreskjema, printable) | `withdrawal-form.html` |
 
 ## Features
 
@@ -47,13 +51,21 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 - **Local storage** holds only the bag, language, currency and cookie choice. No personal data is kept there.
 - **Legal pages:** privacy policy, cookie policy and terms of sale in English and Norwegian, based on the GDPR, the Norwegian Right of Withdrawal Act (angrerettloven) and the Consumer Purchases Act (forbrukerkjøpsloven). These are templates: fill in the `[bracketed]` details and have them reviewed before launch.
 
+## Search engines and sharing
+
+- Every page has a description, a canonical address and sharing tags (Open Graph), so links shared on Instagram, Facebook or in messages show the ROZA preview image (`assets/img/og-image.png`).
+- `sitemap.xml` and `robots.txt` tell Google which pages to index. Checkout, account and returns pages are kept out of search results.
+- The home page describes ROZA AS to Google (organisation data), and each product page describes the product (price, availability).
+
 ## Before launch (checklist)
 
 - [ ] Replace the placeholder illustrations with product photos
 - [ ] Confirm the Instagram and TikTok handles
-- [ ] Fill in the company name, org. no. and address; confirm shipping prices, carriers and delivery times
+- [ ] Fill in the org. no. and address for ROZA AS; confirm shipping prices, carriers, delivery times and the return shipping fee
+- [ ] Agree with an accountant how EU import VAT and customs are handled for Sweden/Denmark (e.g. IOSS, DDP)
 - [ ] Convert the design into a Shopify theme (Liquid) and connect the products, customer accounts and checkout
-- [ ] Set up Shopify Markets (NOK/SEK/DKK/EUR) and the payment methods (Klarna, Vipps, cards, Apple Pay)
+- [ ] Set up Shopify Markets (NOK/SEK/DKK/EUR) and the payment methods: Shopify Payments (card, Apple Pay) and the Vipps MobilePay app
+- [ ] Verify rozathelabel.com in Google Search Console and submit the sitemap
 - [ ] Turn on two-factor login for all Shopify staff accounts
 - [ ] Connect the domain **rozathelabel.com** with HTTPS
 - [ ] Have the legal texts reviewed

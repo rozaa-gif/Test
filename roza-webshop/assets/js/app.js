@@ -232,7 +232,9 @@
       '<li><a href="faq.html" data-i18n="nav.faq"></a></li>' +
       '<li><a href="shipping-returns.html" data-i18n="nav.shipping"></a></li>' +
       '<li><a href="size-guide.html" data-i18n="nav.sizeGuide"></a></li>' +
-      '<li><a href="contact.html" data-i18n="nav.contact"></a></li></ul></div>' +
+      '<li><a href="contact.html" data-i18n="nav.contact"></a></li>' +
+      '<li><a href="returns.html" data-i18n="nav.returns"></a></li>' +
+      '<li><a href="withdrawal-form.html" data-i18n="nav.withdrawal"></a></li></ul></div>' +
       '<div><h3 class="footer-heading"><a href="index.html">ROZA</a></h3><ul>' +
       '<li><a href="about.html" data-i18n="nav.about"></a></li>' +
       '<li><a href="account.html" data-i18n="nav.account"></a></li>' +
@@ -240,7 +242,7 @@
       '<li><a href="' + SOCIAL.tiktok + '" target="_blank" rel="noopener noreferrer">TikTok</a></li></ul></div>' +
       "</div>" +
       '<div class="footer-bottom">' +
-      '<p data-i18n="footer.rights" data-i18n-vars=\'{"year":"' + year + '"}\'></p>' +
+      '<p><span data-i18n="footer.rights" data-i18n-vars=\'{"year":"' + year + '"}\'></span><br><span data-i18n="footer.company"></span></p>' +
       '<ul class="footer-legal">' +
       '<li><a href="privacy.html" data-i18n="legal.privacy"></a></li>' +
       '<li><a href="cookies.html" data-i18n="legal.cookies"></a></li>' +
@@ -454,8 +456,7 @@
     foot.innerHTML =
       '<div class="bag-total"><span>' + esc(t("bag.subtotal")) + "</span><strong>" + esc(money(subtotal)) + "</strong></div>" +
       '<p class="muted small">' + esc(t("bag.shippingNote")) + "</p>" +
-      '<button type="button" class="btn btn--dark btn--block" data-checkout>' + icon("lock") + "<span>" + esc(t("bag.checkout")) + "</span></button>" +
-      '<p class="muted small checkout-note" hidden>' + esc(t("bag.checkoutNote")) + "</p>";
+      '<a class="btn btn--dark btn--block" href="checkout.html">' + icon("lock") + "<span>" + esc(t("bag.checkout")) + "</span></a>";
   }
 
   /* ---------- Cookie consent ---------- */
@@ -502,6 +503,15 @@
     else field.removeAttribute("aria-invalid");
   }
 
+  function postcodeOk(val) {
+    var country = $("#co-country");
+    var v = val.replace(/\s/g, "");
+    return country && country.value === "SE" ? /^\d{5}$/.test(v) : /^\d{4}$/.test(v);
+  }
+
+  /* Pages can take over a form's successful submit (checkout, returns, sign-in). */
+  var formHandlers = {};
+
   function validateForm(form) {
     var firstBad = null;
     $all("input, textarea, select", form).forEach(function (field) {
@@ -510,6 +520,9 @@
       var val = field.type === "checkbox" ? field.checked : field.value.trim();
       if (field.required && !val) key = field.type === "checkbox" ? "form.consentRequired" : "form.required";
       else if (field.type === "email" && val && !EMAIL_RE.test(val)) key = "form.invalidEmail";
+      else if (field.getAttribute("data-rule") === "phone" && val && !/^\+?[\d\s]{8,16}$/.test(val)) key = "co.phone";
+      else if (field.getAttribute("data-rule") === "postcode" && val && !postcodeOk(val)) key = "co.postcode";
+      else if (field.getAttribute("data-rule") === "order" && val && !/^#?\d{4,8}$/.test(val)) key = "ret.orderNotFound";
       else if (field.hasAttribute("data-password-rule") && val && !(val.length >= 10 && /[A-Za-zÆØÅæøå]/.test(val) && /\d/.test(val))) key = "form.passwordRule";
       setError(form, field, key);
       if (key && !firstBad) firstBad = field;
@@ -526,6 +539,8 @@
       var status = $("[data-form-status]", form);
       if (status) status.textContent = "";
       if (!validateForm(form)) return;
+      var handler = formHandlers[form.getAttribute("data-form")];
+      if (handler) { handler(form); return; }
       /* Preview only: nothing is transmitted or stored. At launch these forms post to Shopify over HTTPS. */
       if (status) status.textContent = form.getAttribute("data-form") === "newsletter" ? t("footer.newsThanks") : t("form.preview");
       form.reset();
@@ -562,11 +577,6 @@
         saveBag();
         var btn = $("#bag-panel [data-close]");
         if (btn) btn.focus();
-        return;
-      }
-      if ((el = e.target.closest("[data-checkout]"))) {
-        var note = $(".checkout-note");
-        if (note) note.hidden = false;
         return;
       }
       var menuBtn = e.target.closest(".has-menu > .nav-link");
@@ -720,6 +730,21 @@
     }
     var selectedSize = "";
 
+    /* Structured product data for Google (price, availability, brand). */
+    var ld = document.createElement("script");
+    ld.type = "application/ld+json";
+    ld.textContent = JSON.stringify({
+      "@context": "https://schema.org", "@type": "Product", name: p.name, description: p.desc.en,
+      image: "https://rozathelabel.com/assets/img/og-image.png", sku: p.id, brand: { "@type": "Brand", name: "ROZA" },
+      offers: { "@type": "Offer", url: "https://rozathelabel.com/product.html?id=" + p.id, priceCurrency: "NOK",
+        price: p.price, availability: "https://schema.org/InStock", itemCondition: "https://schema.org/NewCondition" }
+    });
+    document.head.appendChild(ld);
+    var metaDesc = $('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", p.name + " – " + p.desc.en);
+    var canon = $('link[rel="canonical"]');
+    if (canon) canon.setAttribute("href", "https://rozathelabel.com/product.html?id=" + p.id);
+
     root.innerHTML =
       '<div class="container">' +
       '<nav class="breadcrumbs" aria-label="Breadcrumb"><ol>' +
@@ -822,6 +847,220 @@
     show(location.hash === "#create" ? "create" : "signin");
   }
 
+  /* ---------- Checkout (preview of the flow; at launch Shopify's secure checkout takes payment) ---------- */
+  var SHIPPING = {
+    pickup: { NOK: 79, SEK: 79, DKK: 59, EUR: 7 },
+    home: { NOK: 149, SEK: 149, DKK: 109, EUR: 13 }
+  };
+
+  function shippingCost(method, subtotal) {
+    var free = subtotal >= FREE_SHIPPING[state.currency];
+    var pickup = SHIPPING.pickup[state.currency];
+    if (method === "home") return SHIPPING.home[state.currency] - (free ? pickup : 0);
+    return free ? 0 : pickup;
+  }
+
+  function pageCheckout() {
+    var main = $("#co-main"), empty = $("#co-empty"), done = $("#co-done");
+
+    function method() { var r = $('input[name="shipping"]:checked'); return r ? r.value : "pickup"; }
+    function payment() { var r = $('input[name="payment"]:checked'); return r ? r.value : "vipps"; }
+
+    function render() {
+      if (!done.hidden) return;
+      var hasItems = state.bag.length > 0;
+      main.hidden = !hasItems;
+      empty.hidden = hasItems;
+      if (!hasItems) return;
+      var subtotal = bagSubtotal();
+      var ship = shippingCost(method(), subtotal);
+      var total = subtotal + ship;
+      $("#co-items").innerHTML = state.bag.map(function (it) {
+        var p = findProduct(it.id);
+        return '<li class="co-item"><span class="tile tile--' + p.color + '">' + art(p.art) + "</span>" +
+          '<span class="co-item-info"><span class="co-item-name">' + esc(p.name) + "</span>" +
+          '<span class="muted small">' + esc(t("bag.size")) + " " + esc(it.size) + " · " + esc(t("co.qty")) + " " + it.qty + "</span></span>" +
+          '<span class="co-item-price">' + esc(money(priceIn(p.price) * it.qty)) + "</span></li>";
+      }).join("");
+      $("#co-subtotal").textContent = money(subtotal);
+      $("#co-shipping").textContent = ship === 0 ? t("co.free") : money(ship);
+      $("#co-total").textContent = money(total);
+      $("#co-vat").textContent = t("co.vat", { amount: money(Math.round(total - total / 1.25)) });
+      $("#co-pay-label").textContent = t("co.pay", { amount: money(total) });
+      $all("[data-ship-price]").forEach(function (el) {
+        var c = shippingCost(el.getAttribute("data-ship-price"), subtotal);
+        el.textContent = c === 0 ? t("co.free") : money(c);
+      });
+      $all("[data-pay-info]").forEach(function (el) { el.hidden = el.getAttribute("data-pay-info") !== payment(); });
+    }
+
+    document.addEventListener("change", function (e) {
+      if (e.target.name === "shipping" || e.target.name === "payment") render();
+    });
+
+    formHandlers.checkout = function (form) {
+      var email = $("#co-email").value.trim();
+      var pay = $('input[name="payment"]:checked + .choice-body .choice-title');
+      var orderNo = String(1058 + Math.floor(Math.random() * 900));
+      $("#done-order").textContent = "#" + orderNo;
+      $("#done-email").textContent = email;
+      $("#done-payment").textContent = pay ? pay.innerText : "";
+      state.bag = [];
+      saveBag();
+      form.reset();
+      main.hidden = true;
+      done.hidden = false;
+      window.scrollTo(0, 0);
+      var h = $("h1", done);
+      if (h) { h.tabIndex = -1; h.focus(); }
+    };
+
+    onRender(render);
+  }
+
+  /* ---------- My account (sample data until Shopify customer accounts are connected) ---------- */
+  var DEMO_ORDERS = [
+    { no: "1057", date: "2026-09-24", status: "shipped", items: [["midnight-slip-dress", "S", 1], ["signature-blazer", "S", 1]] },
+    { no: "1042", date: "2026-08-30", status: "delivered", items: [["boardroom-dress", "M", 1]] }
+  ];
+
+  function findOrder(no) {
+    no = String(no || "").replace("#", "");
+    for (var i = 0; i < DEMO_ORDERS.length; i++) if (DEMO_ORDERS[i].no === no) return DEMO_ORDERS[i];
+    return null;
+  }
+
+  function formatDate(iso) {
+    return new Intl.DateTimeFormat(state.lang === "nb" ? "nb-NO" : "en-GB", { day: "numeric", month: "long", year: "numeric" })
+      .format(new Date(iso + "T12:00:00"));
+  }
+
+  function pageMyAccount() {
+    function show(name) {
+      $all("[data-section]").forEach(function (sec) { sec.hidden = sec.getAttribute("data-section") !== name; });
+      $all("[data-go]").forEach(function (b) {
+        var active = b.getAttribute("data-go") === name;
+        b.classList.toggle("is-active", active);
+        if (b.closest(".acc-nav")) b.setAttribute("aria-current", active ? "page" : "false");
+      });
+    }
+    document.addEventListener("click", function (e) {
+      var el = e.target.closest("[data-go]");
+      if (el) { e.preventDefault(); show(el.getAttribute("data-go")); history.replaceState(null, "", "#" + el.getAttribute("data-go")); return; }
+      if (e.target.closest("[data-track]")) { e.preventDefault(); toast(t("acc.trackPreview")); return; }
+      if (e.target.closest("[data-download-data]")) {
+        /* GDPR data portability: at launch this exports the customer's real data from Shopify. */
+        var data = { sample: true, customer: { first_name: "Kari", last_name: "Nordmann", email: "kari@example.com" },
+          orders: DEMO_ORDERS, marketing_consent: false, exported: new Date().toISOString() };
+        var url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }));
+        var a = document.createElement("a");
+        a.href = url; a.download = "roza-mine-data.json";
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        toast(t("acc.downloaded"));
+        return;
+      }
+      if (e.target.closest("[data-delete-account]")) {
+        if (window.confirm(t("acc.deleteConfirm"))) $("#delete-status").textContent = t("acc.deleted");
+      }
+    });
+
+    onRender(function () {
+      $("#order-list").innerHTML = DEMO_ORDERS.map(function (o) {
+        var total = o.items.reduce(function (sum, it) { return sum + priceIn(findProduct(it[0]).price) * it[2]; }, 0);
+        return '<li class="order">' +
+          '<div class="order-head"><div><p class="order-no">' + esc(t("acc.order")) + " #" + o.no + "</p>" +
+          '<p class="muted small">' + esc(t("acc.placed", { date: formatDate(o.date) })) + " · " + esc(money(total)) + "</p></div>" +
+          '<span class="status status--' + o.status + '">' + esc(t("acc.status." + o.status)) + "</span></div>" +
+          '<ul class="order-items">' + o.items.map(function (it) {
+            var p = findProduct(it[0]);
+            return '<li><span class="tile tile--' + p.color + '">' + art(p.art) + "</span><span>" + esc(p.name) +
+              '<span class="muted small">' + esc(t("bag.size")) + " " + esc(it[1]) + "</span></span></li>";
+          }).join("") + "</ul>" +
+          '<div class="order-actions">' +
+          (o.status === "shipped" ? '<a class="btn btn--outline" href="#" data-track>' + esc(t("acc.track")) + "</a>" : "") +
+          '<a class="btn btn--ghost" href="returns.html?order=' + o.no + '">' + esc(t("acc.return")) + "</a></div></li>";
+      }).join("");
+    });
+
+    var start = location.hash.replace("#", "");
+    show($('[data-section="' + start + '"]') ? start : "overview");
+  }
+
+  /* ---------- Returns portal ---------- */
+  function pageReturns() {
+    var steps = { find: $("#ret-find"), items: $("#ret-items"), done: $("#ret-done") };
+    var order = null;
+    function go(step) {
+      Object.keys(steps).forEach(function (k) { steps[k].hidden = k !== step; });
+      $all("[data-step-mark]").forEach(function (m) { m.classList.toggle("is-active", m.getAttribute("data-step-mark") === step); });
+      window.scrollTo(0, 0);
+    }
+    var pre = new URLSearchParams(location.search).get("order");
+    if (pre && /^\d{4,8}$/.test(pre)) $("#ret-order").value = pre;
+
+    var REASONS = ["tooBig", "tooSmall", "fit", "expected", "faulty", "other"];
+    function renderItems() {
+      if (!order) return;
+      $("#ret-order-label").textContent = "#" + order.no;
+      $("#ret-list").innerHTML = order.items.map(function (it, i) {
+        var p = findProduct(it[0]);
+        return '<li class="ret-item"><label class="ret-check"><input type="checkbox" name="item" value="' + i + '" id="ret-item-' + i + '">' +
+          '<span class="tile tile--' + p.color + '">' + art(p.art) + "</span>" +
+          '<span><span class="co-item-name">' + esc(p.name) + '</span><span class="muted small">' + esc(t("bag.size")) + " " + esc(it[1]) +
+          " · " + esc(money(priceIn(p.price))) + "</span></span></label>" +
+          '<div class="field"><label for="ret-reason-' + i + '">' + esc(t("ret.reason")) + "</label>" +
+          '<select id="ret-reason-' + i + '" class="plain-select" data-reason><option value="">' + esc(t("ret.choose")) + "</option>" +
+          REASONS.map(function (r) { return '<option value="' + r + '">' + esc(t("ret." + r)) + "</option>"; }).join("") +
+          "</select></div></li>";
+      }).join("");
+    }
+
+    formHandlers["return-find"] = function () {
+      /* Preview: any order number works and shows sample items. At launch Shopify looks up the real order. */
+      order = findOrder($("#ret-order").value) || { no: $("#ret-order").value.replace("#", ""), items: DEMO_ORDERS[0].items };
+      renderItems();
+      go("items");
+    };
+
+    formHandlers["return-items"] = function () {
+      var err = $("#ret-error");
+      var checked = $all('input[name="item"]:checked');
+      if (!checked.length) { err.textContent = t("ret.selectItem"); return; }
+      var missing = checked.filter(function (c) { return !$("#ret-reason-" + c.value).value; });
+      if (missing.length) { err.textContent = t("ret.chooseReason"); $("#ret-reason-" + missing[0].value).focus(); return; }
+      err.textContent = "";
+      var faulty = checked.some(function (c) { return $("#ret-reason-" + c.value).value === "faulty"; });
+      $("#ret-number").textContent = "RT-" + order.no + "-" + String(Math.floor(100 + Math.random() * 900));
+      $("#ret-faulty-note").hidden = !faulty;
+      $("#ret-paid-note").hidden = faulty;
+      go("done");
+    };
+
+    document.addEventListener("change", function (e) {
+      if (e.target.matches("[data-reason]")) {
+        var any = $all("[data-reason]").some(function (s) { return s.value === "faulty"; });
+        $("#ret-faulty-hint").hidden = !any;
+        var box = $("#ret-item-" + e.target.id.split("-").pop());
+        if (box && e.target.value) box.checked = true;
+      }
+    });
+    document.addEventListener("click", function (e) {
+      if (e.target.closest("[data-label]")) toast(t("ret.labelPreview"));
+      var back = e.target.closest("[data-ret-back]");
+      if (back) go("find");
+    });
+    onRender(renderItems);
+    go("find");
+  }
+
+  function pageWithdrawal() {
+    var today = new Date().toISOString().slice(0, 10);
+    var d = $("#wd-date");
+    if (d) d.value = today;
+    document.addEventListener("click", function (e) { if (e.target.closest("[data-print]")) window.print(); });
+  }
+
   /* ---------- Boot ---------- */
   function init() {
     buildHeader();
@@ -836,7 +1075,15 @@
     if (page === "home") pageHome();
     if (page === "shop") pageShop();
     if (page === "product") pageProduct();
-    if (page === "account") pageAccount();
+    if (page === "account") {
+      pageAccount();
+      /* Preview: signing in or creating an account opens the sample "My account" page. */
+      formHandlers.signin = formHandlers.create = function () { location.href = "my-account.html"; };
+    }
+    if (page === "checkout") pageCheckout();
+    if (page === "my-account") pageMyAccount();
+    if (page === "returns") pageReturns();
+    if (page === "withdrawal") pageWithdrawal();
 
     var consent = getConsent();
     if (consent) loadOptionalScripts(consent);

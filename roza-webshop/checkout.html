@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex">
+  <title>Checkout | ROZA</title>
+  <meta name="description" content="Secure checkout at ROZA.">
+  <link rel="canonical" href="https://rozathelabel.com/checkout.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ROZA">
+  <meta property="og:title" content="Checkout | ROZA">
+  <meta property="og:description" content="Secure checkout at ROZA.">
+  <meta property="og:url" content="https://rozathelabel.com/checkout.html">
+  <meta property="og:image" content="https://rozathelabel.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body data-page="checkout" data-title="title.checkout">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <div class="container co-wrap">
+      <p class="preview-note"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="10.5" width="14" height="9.5" rx="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-lang="en">Design preview – no payment is taken. At launch, payment runs through Shopify’s secure, encrypted checkout.</span><span data-lang="nb">Forhåndsvisning – ingen betaling gjennomføres. Ved lansering skjer betalingen i Shopifys sikre, krypterte kasse.</span></p>
+
+      <div id="co-empty" class="co-empty" hidden>
+        <h1 class="h2" data-i18n="title.checkout"></h1>
+        <p data-i18n="co.empty"></p>
+        <a class="btn btn--dark" href="shop.html?cat=new" data-i18n="bag.continue"></a>
+      </div>
+
+      <div id="co-main" class="co-grid">
+        <form class="form co-form" novalidate data-form="checkout" autocomplete="on">
+          <h1 class="co-title" data-i18n="title.checkout"></h1>
+
+          <fieldset class="co-step">
+            <legend><span data-lang="en">1. Contact</span><span data-lang="nb">1. Kontakt</span></legend>
+            <div class="field">
+              <label for="co-email" data-i18n="form.email"></label>
+              <input id="co-email" name="email" type="email" autocomplete="email" required maxlength="254">
+              <p class="field-error" data-error-for="co-email"></p>
+            </div>
+            <p class="small muted"><span data-lang="en">Have an account? <a class="link-underline" href="account.html">Sign in</a></span><span data-lang="nb">Har du konto? <a class="link-underline" href="account.html">Logg inn</a></span></p>
+          </fieldset>
+
+          <fieldset class="co-step">
+            <legend><span data-lang="en">2. Delivery</span><span data-lang="nb">2. Levering</span></legend>
+            <div class="field">
+              <label for="co-country"><span data-lang="en">Country</span><span data-lang="nb">Land</span></label>
+              <select id="co-country" name="country" class="plain-select" autocomplete="country">
+                <option value="NO">Norge / Norway</option>
+                <option value="SE">Sverige / Sweden</option>
+                <option value="DK">Danmark / Denmark</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="field"><label for="co-first" data-i18n="form.firstName"></label>
+                <input id="co-first" name="first_name" autocomplete="given-name" required maxlength="60"><p class="field-error" data-error-for="co-first"></p></div>
+              <div class="field"><label for="co-last" data-i18n="form.lastName"></label>
+                <input id="co-last" name="last_name" autocomplete="family-name" required maxlength="60"><p class="field-error" data-error-for="co-last"></p></div>
+            </div>
+            <div class="field"><label for="co-address"><span data-lang="en">Address</span><span data-lang="nb">Adresse</span></label>
+              <input id="co-address" name="address" autocomplete="street-address" required maxlength="120"><p class="field-error" data-error-for="co-address"></p></div>
+            <div class="form-row">
+              <div class="field"><label for="co-postcode"><span data-lang="en">Postcode</span><span data-lang="nb">Postnummer</span></label>
+                <input id="co-postcode" name="postcode" autocomplete="postal-code" inputmode="numeric" required maxlength="6" data-rule="postcode"><p class="field-error" data-error-for="co-postcode"></p></div>
+              <div class="field"><label for="co-city"><span data-lang="en">City</span><span data-lang="nb">Poststed</span></label>
+                <input id="co-city" name="city" autocomplete="address-level2" required maxlength="60"><p class="field-error" data-error-for="co-city"></p></div>
+            </div>
+            <div class="field"><label for="co-phone"><span data-lang="en">Mobile number</span><span data-lang="nb">Mobilnummer</span></label>
+              <input id="co-phone" name="phone" type="tel" autocomplete="tel" required maxlength="16" data-rule="phone">
+              <p class="field-hint"><span data-lang="en">For delivery notifications by SMS.</span><span data-lang="nb">For varsling om levering på SMS.</span></p>
+              <p class="field-error" data-error-for="co-phone"></p></div>
+
+            <div class="choices" role="radiogroup">
+              <label class="choice"><input type="radio" name="shipping" value="pickup" checked>
+                <span class="choice-body"><span class="choice-title"><span data-lang="en">Pick-up point</span><span data-lang="nb">Hentested</span></span>
+                <span class="choice-text"><span data-lang="en">Posten/Bring or PostNord · 1–3 working days</span><span data-lang="nb">Posten/Bring eller PostNord · 1–3 virkedager</span></span></span>
+                <span class="choice-price" data-ship-price="pickup"></span></label>
+              <label class="choice"><input type="radio" name="shipping" value="home">
+                <span class="choice-body"><span class="choice-title"><span data-lang="en">Home delivery</span><span data-lang="nb">Hjemlevering</span></span>
+                <span class="choice-text"><span data-lang="en">Delivered to your door · 1–3 working days</span><span data-lang="nb">Levert på døren · 1–3 virkedager</span></span></span>
+                <span class="choice-price" data-ship-price="home"></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="co-step">
+            <legend><span data-lang="en">3. Payment</span><span data-lang="nb">3. Betaling</span></legend>
+            <div class="choices" role="radiogroup">
+              <label class="choice"><input type="radio" name="payment" value="vipps" checked>
+                <span class="choice-body"><span class="choice-title">Vipps</span>
+                <span class="choice-text"><span data-lang="en">Confirm in the Vipps app</span><span data-lang="nb">Bekreft i Vipps-appen</span></span></span>
+                <span class="pay-mark pay-mark--vipps" aria-hidden="true">vipps</span></label>
+              <label class="choice"><input type="radio" name="payment" value="applepay">
+                <span class="choice-body"><span class="choice-title">Apple Pay</span>
+                <span class="choice-text"><span data-lang="en">Pay with Face ID or Touch ID</span><span data-lang="nb">Betal med Face ID eller Touch ID</span></span></span>
+                <span class="pay-mark pay-mark--apple" aria-hidden="true">Pay</span></label>
+              <label class="choice"><input type="radio" name="payment" value="card">
+                <span class="choice-body"><span class="choice-title"><span data-lang="en">Card</span><span data-lang="nb">Kort</span></span>
+                <span class="choice-text">Visa · Mastercard</span></span>
+                <span class="pay-mark" aria-hidden="true">VISA · MC</span></label>
+            </div>
+            <div class="pay-info" data-pay-info="vipps"><span data-lang="en">After you click “Pay”, you confirm the payment in the Vipps app on your phone.</span><span data-lang="nb">Når du trykker «Betal», bekrefter du betalingen i Vipps-appen på mobilen.</span></div>
+            <div class="pay-info" data-pay-info="applepay" hidden><span data-lang="en">Apple Pay appears on iPhone, iPad and Mac in Safari. Your card details are never shared with ROZA.</span><span data-lang="nb">Apple Pay vises på iPhone, iPad og Mac i Safari. Kortopplysningene dine deles aldri med ROZA.</span></div>
+            <div class="pay-info pay-info--card" data-pay-info="card" hidden>
+              <div class="card-fields" aria-hidden="true"><span class="cf"><span data-lang="en">Card number</span><span data-lang="nb">Kortnummer</span></span><span class="cf">MM / ÅÅ</span><span class="cf">CVC</span></div>
+              <p class="small"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="10.5" width="14" height="9.5" rx="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-lang="en">At launch, secure card fields from our PCI-DSS certified payment provider appear here. ROZA never sees or stores your card number.</span><span data-lang="nb">Ved lansering vises sikre kortfelt fra vår PCI-DSS-sertifiserte betalingsleverandør her. ROZA ser eller lagrer aldri kortnummeret ditt.</span></p>
+            </div>
+          </fieldset>
+
+          <label class="checkbox"><input type="checkbox" id="co-terms" required>
+            <span><span data-lang="en">I accept the <a href="terms.html">terms of sale</a> and have read about the <a href="withdrawal-form.html">14-day right of withdrawal</a> and the <a href="privacy.html">privacy policy</a>.</span><span data-lang="nb">Jeg godtar <a href="terms.html">salgsbetingelsene</a> og har lest om <a href="withdrawal-form.html">14 dagers angrerett</a> og <a href="privacy.html">personvernerklæringen</a>.</span></span></label>
+          <p class="field-error" data-error-for="co-terms"></p>
+
+          <button class="btn btn--dark btn--block btn--lg" type="submit"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="10.5" width="14" height="9.5" rx="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span id="co-pay-label"></span></button>
+        </form>
+
+        <aside class="co-summary" aria-labelledby="sum-title">
+          <div class="co-summary-inner">
+            <div class="co-summary-head"><h2 id="sum-title" class="h3" data-i18n="bag.title"></h2>
+              <button type="button" class="link-btn small" data-open="bag-panel" data-i18n="co.edit"></button></div>
+            <ul id="co-items" class="co-items"></ul>
+            <dl class="co-totals">
+              <div><dt data-i18n="co.subtotal"></dt><dd id="co-subtotal"></dd></div>
+              <div><dt data-i18n="co.shipping"></dt><dd id="co-shipping"></dd></div>
+              <div class="co-grand"><dt data-i18n="co.total"></dt><dd id="co-total"></dd></div>
+            </dl>
+            <p class="muted small" id="co-vat"></p>
+            <ul class="co-trust small muted">
+              <li><svg class="icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="10.5" width="14" height="9.5" rx="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span data-lang="en">Secure, encrypted payment</span><span data-lang="nb">Sikker, kryptert betaling</span></li>
+              <li><span data-lang="en">14-day right of withdrawal</span><span data-lang="nb">14 dagers angrerett</span></li>
+              <li><span data-lang="en">Free shipping in Scandinavia over 1 500 kr</span><span data-lang="nb">Fri frakt i Skandinavia over 1 500 kr</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <div id="co-done" class="co-done" hidden>
+        <p class="eyebrow"><span data-lang="en">Thank you</span><span data-lang="nb">Takk</span></p>
+        <h1 class="h2"><span data-lang="en">Your order is confirmed</span><span data-lang="nb">Bestillingen din er bekreftet</span></h1>
+        <p><span data-lang="en">Order number</span><span data-lang="nb">Ordrenummer</span> <strong id="done-order"></strong> · <span id="done-payment"></span></p>
+        <p class="muted"><span data-lang="en">A confirmation with your receipt and the withdrawal form is sent to</span><span data-lang="nb">En bekreftelse med kvittering og angreskjema sendes til</span> <strong id="done-email"></strong>. <span data-lang="en">You will get a tracking link when the parcel ships.</span><span data-lang="nb">Du får sporingslenke når pakken sendes.</span></p>
+        <p class="muted small"><span data-lang="en">(Design preview – no order was placed and nothing was charged.)</span><span data-lang="nb">(Forhåndsvisning – ingen bestilling ble lagt inn og ingenting ble belastet.)</span></p>
+        <a class="btn btn--dark" href="index.html"><span data-lang="en">Back to ROZA</span><span data-lang="nb">Tilbake til ROZA</span></a>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

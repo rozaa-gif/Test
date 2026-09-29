@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex">
+  <title>My account | ROZA</title>
+  <meta name="description" content="Your ROZA account.">
+  <link rel="canonical" href="https://rozathelabel.com/my-account.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ROZA">
+  <meta property="og:title" content="My account | ROZA">
+  <meta property="og:description" content="Your ROZA account.">
+  <meta property="og:url" content="https://rozathelabel.com/my-account.html">
+  <meta property="og:image" content="https://rozathelabel.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/products.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body data-page="my-account" data-title="title.myAccount">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero page-hero--left">
+      <div class="container">
+        <p class="preview-note"><span data-lang="en">Design preview with sample data. At launch this page shows the customer’s real orders from Shopify.</span><span data-lang="nb">Forhåndsvisning med eksempeldata. Ved lansering viser siden kundens ekte bestillinger fra Shopify.</span></p>
+        <h1><span data-lang="en">Hello, Kari</span><span data-lang="nb">Hei, Kari</span></h1>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container acc-grid">
+        <nav class="acc-nav" aria-label="Min konto">
+          <a href="#overview" data-go="overview"><span data-lang="en">Overview</span><span data-lang="nb">Oversikt</span></a>
+          <a href="#orders" data-go="orders"><span data-lang="en">Orders & tracking</span><span data-lang="nb">Bestillinger og sporing</span></a>
+          <a href="#addresses" data-go="addresses"><span data-lang="en">Addresses</span><span data-lang="nb">Adresser</span></a>
+          <a href="#privacy" data-go="privacy"><span data-lang="en">Privacy & my data</span><span data-lang="nb">Personvern og mine data</span></a>
+          <a href="index.html"><span data-lang="en">Sign out</span><span data-lang="nb">Logg ut</span></a>
+        </nav>
+
+        <div class="acc-content">
+          <div data-section="overview">
+            <h2 class="h3"><span data-lang="en">Overview</span><span data-lang="nb">Oversikt</span></h2>
+            <div class="acc-cards">
+              <a class="acc-card" href="#orders" data-go="orders"><strong><span data-lang="en">Orders</span><span data-lang="nb">Bestillinger</span></strong><span class="muted small"><span data-lang="en">1 order on its way</span><span data-lang="nb">1 bestilling er på vei</span></span></a>
+              <a class="acc-card" href="returns.html"><strong data-i18n="nav.returns"></strong><span class="muted small"><span data-lang="en">Return within 14 days</span><span data-lang="nb">Returner innen 14 dager</span></span></a>
+              <a class="acc-card" href="#addresses" data-go="addresses"><strong><span data-lang="en">Addresses</span><span data-lang="nb">Adresser</span></strong><span class="muted small"><span data-lang="en">1 saved address</span><span data-lang="nb">1 lagret adresse</span></span></a>
+              <a class="acc-card" href="#privacy" data-go="privacy"><strong><span data-lang="en">Privacy & my data</span><span data-lang="nb">Personvern og mine data</span></strong><span class="muted small"><span data-lang="en">Download or delete your data</span><span data-lang="nb">Last ned eller slett dataene dine</span></span></a>
+            </div>
+          </div>
+
+          <div data-section="orders" hidden>
+            <h2 class="h3"><span data-lang="en">Orders & tracking</span><span data-lang="nb">Bestillinger og sporing</span></h2>
+            <ul id="order-list" class="order-list"></ul>
+          </div>
+
+          <div data-section="addresses" hidden>
+            <h2 class="h3"><span data-lang="en">Addresses</span><span data-lang="nb">Adresser</span></h2>
+            <div class="address-card">
+              <p class="eyebrow"><span data-lang="en">Default address</span><span data-lang="nb">Standardadresse</span></p>
+              <p>Kari Nordmann<br>Eksempelgata 1<br>0150 Oslo<br>Norge</p>
+              <div class="order-actions"><button type="button" class="btn btn--outline"><span data-lang="en">Edit</span><span data-lang="nb">Endre</span></button><button type="button" class="btn btn--ghost"><span data-lang="en">Delete</span><span data-lang="nb">Slett</span></button></div>
+            </div>
+            <button type="button" class="btn btn--dark"><span data-lang="en">Add new address</span><span data-lang="nb">Legg til ny adresse</span></button>
+          </div>
+
+          <div data-section="privacy" hidden>
+            <h2 class="h3"><span data-lang="en">Privacy & my data</span><span data-lang="nb">Personvern og mine data</span></h2>
+            <div class="prose">
+              <h3><span data-lang="en">Email preferences</span><span data-lang="nb">E-postinnstillinger</span></h3>
+              <label class="switch-row"><span><span data-lang="en">News and offers by email</span><span data-lang="nb">Nyheter og tilbud på e-post</span></span>
+                <span class="switch"><input type="checkbox" id="pref-news"><span class="switch-ui" aria-hidden="true"></span></span></label>
+              <h3><span data-lang="en">Download my data</span><span data-lang="nb">Last ned mine data</span></h3>
+              <p><span data-lang="en">Get a copy of the personal data we hold about you (GDPR art. 15 and 20).</span><span data-lang="nb">Få en kopi av personopplysningene vi har om deg (GDPR art. 15 og 20).</span></p>
+              <p><button type="button" class="btn btn--outline" data-download-data><span data-lang="en">Download my data</span><span data-lang="nb">Last ned mine data</span></button></p>
+              <h3><span data-lang="en">Delete my account</span><span data-lang="nb">Slett kontoen min</span></h3>
+              <p><span data-lang="en">We delete your account and personal data within 30 days. Order records we must keep under accounting law are stored securely until the retention period ends.</span><span data-lang="nb">Vi sletter kontoen og personopplysningene dine innen 30 dager. Ordreopplysninger vi må oppbevare etter bokføringsloven, lagres sikkert til oppbevaringstiden er ute.</span></p>
+              <p><button type="button" class="btn btn--outline btn--danger" data-delete-account><span data-lang="en">Delete my account</span><span data-lang="nb">Slett kontoen min</span></button></p>
+              <p class="form-status" id="delete-status" role="status"></p>
+              <p class="small"><span data-lang="en">Read more in our <a href="privacy.html">privacy policy</a>.</span><span data-lang="nb">Les mer i vår <a href="privacy.html">personvernerklæring</a>.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
