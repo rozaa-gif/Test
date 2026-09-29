@@ -117,11 +117,14 @@
     }).join("");
   }
 
-  function prefsHTML(suffix) {
-    return '<div class="prefs">' +
-      '<div class="lang-switch" role="group" data-i18n-aria="label.language">' +
+  function langHTML() {
+    return '<div class="lang-switch" role="group" data-i18n-aria="label.language">' +
       '<button type="button" data-lang-set="en" lang="en">EN</button><span aria-hidden="true">/</span>' +
-      '<button type="button" data-lang-set="nb" lang="nb">NO</button></div>' +
+      '<button type="button" data-lang-set="nb" lang="nb">NO</button></div>';
+  }
+
+  function prefsHTML(suffix) {
+    return '<div class="prefs">' + langHTML() +
       '<label class="visually-hidden" for="currency-' + suffix + '" data-i18n="label.currency"></label>' +
       '<select class="currency-select" id="currency-' + suffix + '" data-currency-select>' +
       CURRENCIES.map(function (c) { return '<option value="' + c + '">' + c + "</option>"; }).join("") +
@@ -138,7 +141,6 @@
     if (!mount) return;
     mount.outerHTML =
       '<a class="skip-link" href="#main" data-i18n="nav.skip"></a>' +
-      '<div class="announce"><p id="announce-text"></p></div>' +
       '<header class="site-header">' +
       '<div class="container header-inner">' +
       '<div class="header-left">' +
@@ -151,22 +153,12 @@
       '<div class="mega-col"><a class="mega-strong" href="shop.html?cat=new" data-i18n="nav.newIn"></a>' +
       '<a class="mega-strong" href="shop.html?cat=all" data-i18n="nav.shopAll"></a></div>' +
       '<div class="mega-col"><p class="mega-heading" data-i18n="nav.clothing"></p><ul class="mega-list">' + catLinks() + "</ul></div>" +
-      '<a class="mega-feature" href="shop.html?cat=afterwork"><div class="tile tile--black">' + art("slip") + "</div>" +
-      '<span class="mega-feature-title" data-i18n="nav.featureTitle"></span><span class="link-arrow" data-i18n="nav.featureCta"></span></a>' +
       "</div></div></li>" +
       '<li><a class="nav-link" href="about.html" data-i18n="nav.about"></a></li>' +
-      '<li class="has-menu has-dropdown">' +
-      '<button type="button" class="nav-link" aria-expanded="false" aria-controls="drop-help"><span data-i18n="nav.help"></span>' + icon("chevron") + "</button>" +
-      '<div class="dropdown" id="drop-help"><ul>' +
-      '<li><a href="faq.html" data-i18n="nav.faq"></a></li>' +
-      '<li><a href="shipping-returns.html" data-i18n="nav.shipping"></a></li>' +
-      '<li><a href="size-guide.html" data-i18n="nav.sizeGuide"></a></li>' +
-      '<li><a href="contact.html" data-i18n="nav.contact"></a></li>' +
-      "</ul></div></li>" +
       "</ul></nav></div>" +
       '<a class="logo" href="index.html" aria-label="ROZA"><span class="logo-word">ROZA</span><span class="logo-sub">THE LABEL</span></a>' +
       '<div class="header-right">' +
-      '<div class="header-prefs">' + prefsHTML("header") + "</div>" +
+      '<div class="header-prefs">' + langHTML() + "</div>" +
       '<button type="button" class="icon-btn" data-open="search-panel" data-i18n-aria="nav.search">' + icon("search") + "</button>" +
       '<a class="icon-btn hide-mobile" href="account.html" data-i18n-aria="nav.account">' + icon("user") + "</a>" +
       '<button type="button" class="icon-btn bag-toggle" data-open="bag-panel" data-i18n-aria="nav.bag">' + icon("bag") +
@@ -224,42 +216,37 @@
     if (!mount) return;
     var year = new Date().getFullYear();
     mount.outerHTML =
-      '<section class="newsletter" aria-labelledby="news-title"><div class="container newsletter-inner">' +
-      '<div><h2 class="newsletter-title" id="news-title" data-i18n="footer.newsTitle"></h2><p data-i18n="footer.newsText"></p></div>' +
+      '<footer class="site-footer"><div class="container">' +
+      '<div class="footer-grid">' +
+      '<div class="footer-news"><h2 class="footer-heading" id="news-title" data-i18n="footer.newsTitle"></h2>' +
       '<form class="newsletter-form" novalidate data-form="newsletter">' +
       '<div class="inline-field"><label class="visually-hidden" for="news-email" data-i18n="form.email"></label>' +
       '<input id="news-email" name="email" type="email" autocomplete="email" required maxlength="254" data-i18n-placeholder="form.email">' +
-      '<button class="btn btn--dark" type="submit" data-i18n="footer.subscribe"></button></div>' +
+      '<button type="submit" class="news-submit" data-i18n-aria="footer.subscribe">' + icon("arrow") + "</button></div>" +
       '<p class="field-error" data-error-for="news-email"></p>' +
       '<label class="checkbox"><input type="checkbox" name="consent" id="news-consent" required><span data-i18n-html="footer.newsConsent"></span></label>' +
       '<p class="field-error" data-error-for="news-consent"></p>' +
       '<p class="form-status" data-form-status role="status"></p>' +
-      "</form></div></section>" +
-
-      '<footer class="site-footer"><div class="container">' +
-      '<div class="footer-grid">' +
-      '<div class="footer-brand"><a class="logo logo--light" href="index.html" aria-label="ROZA"><span class="logo-word">ROZA</span><span class="logo-sub">THE LABEL</span></a>' +
-      '<p data-i18n="footer.tagline"></p><p class="eyebrow" data-i18n="footer.follow"></p><div class="socials">' + socialLinks() + "</div></div>" +
-      '<div><h3 class="footer-heading" data-i18n="footer.shop"></h3><ul>' +
-      '<li><a href="shop.html?cat=new" data-i18n="nav.newIn"></a></li>' + catLinks() + "</ul></div>" +
+      "</form></div>" +
       '<div><h3 class="footer-heading" data-i18n="footer.help"></h3><ul>' +
       '<li><a href="faq.html" data-i18n="nav.faq"></a></li>' +
       '<li><a href="shipping-returns.html" data-i18n="nav.shipping"></a></li>' +
       '<li><a href="size-guide.html" data-i18n="nav.sizeGuide"></a></li>' +
-      '<li><a href="contact.html" data-i18n="nav.contact"></a></li>' +
-      '<li><a href="account.html" data-i18n="nav.account"></a></li></ul></div>' +
-      '<div><h3 class="footer-heading" data-i18n="footer.legal"></h3><ul>' +
+      '<li><a href="contact.html" data-i18n="nav.contact"></a></li></ul></div>' +
+      '<div><h3 class="footer-heading">ROZA</h3><ul>' +
       '<li><a href="about.html" data-i18n="nav.about"></a></li>' +
-      '<li><a href="privacy.html" data-i18n="legal.privacy"></a></li>' +
-      '<li><a href="cookies.html" data-i18n="legal.cookies"></a></li>' +
-      '<li><a href="terms.html" data-i18n="legal.terms"></a></li>' +
-      '<li><button type="button" class="link-btn" data-open-cookie-settings data-i18n="legal.cookieSettings"></button></li></ul></div>' +
+      '<li><a href="account.html" data-i18n="nav.account"></a></li>' +
+      '<li><a href="' + SOCIAL.instagram + '" target="_blank" rel="noopener noreferrer">Instagram</a></li>' +
+      '<li><a href="' + SOCIAL.tiktok + '" target="_blank" rel="noopener noreferrer">TikTok</a></li></ul></div>' +
       "</div>" +
       '<div class="footer-bottom">' +
       '<p data-i18n="footer.rights" data-i18n-vars=\'{"year":"' + year + '"}\'></p>' +
-      '<div class="payments"><span class="payments-label">' + icon("lock") + '<span data-i18n="footer.payments"></span></span>' +
-      ["Visa", "Mastercard", "Klarna", "Vipps", "Apple Pay"].map(function (p) { return '<span class="pay">' + p + "</span>"; }).join("") +
-      "</div>" + prefsHTML("footer") + "</div>" +
+      '<ul class="footer-legal">' +
+      '<li><a href="privacy.html" data-i18n="legal.privacy"></a></li>' +
+      '<li><a href="cookies.html" data-i18n="legal.cookies"></a></li>' +
+      '<li><a href="terms.html" data-i18n="legal.terms"></a></li>' +
+      '<li><button type="button" class="link-btn" data-open-cookie-settings data-i18n="legal.cookieSettings"></button></li></ul>' +
+      prefsHTML("footer") + "</div>" +
       "</div></footer>" +
 
       /* Cookie consent */
@@ -405,10 +392,8 @@
   function productCard(p) {
     return '<article class="card">' +
       '<a class="card-link" href="product.html?id=' + encodeURIComponent(p.id) + '">' +
-      '<div class="tile tile--' + p.color + '">' + art(p.art) +
-      (p.isNew ? '<span class="badge">' + esc(t("badge.new")) + "</span>" : "") + "</div>" +
+      '<div class="tile tile--' + p.color + '">' + art(p.art) + "</div>" +
       '<div class="card-body"><h3 class="card-title">' + esc(p.name) + "</h3>" +
-      '<p class="card-meta">' + esc(t("color." + p.color)) + "</p>" +
       '<p class="card-price">' + esc(money(priceIn(p.price))) + "</p></div></a></article>";
   }
 

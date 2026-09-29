@@ -16,105 +16,12 @@
 <body data-page="home" data-title="title.home">
   <div id="site-header"></div>
 
-  <main id="main">
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-text">
-        <p class="eyebrow" data-i18n="home.heroEyebrow"></p>
-        <h1 id="hero-title" data-i18n="home.heroTitle"></h1>
-        <p data-i18n="home.heroText"></p>
-        <div class="hero-actions">
-          <a class="btn btn--dark" href="shop.html?cat=new" data-i18n="home.shopNew"></a>
-          <a class="btn btn--outline" href="shop.html?cat=blazers" data-i18n="home.shopBlazers"></a>
-        </div>
-      </div>
-      <div class="tile tile--black hero-visual" data-art="blazer"></div>
-    </section>
-
-    <!-- Categories -->
-    <section class="section" aria-labelledby="cat-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2" id="cat-title" data-i18n="home.catTitle"></h2>
-          <a class="link-arrow" href="shop.html?cat=all" data-i18n="nav.shopAll"></a>
-        </div>
-        <div class="cat-grid">
-          <a class="cat-tile" href="shop.html?cat=blazers"><div class="tile tile--nude" data-art="blazer"></div><span class="cat-label"><span data-i18n="cat.blazers"></span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
-          <a class="cat-tile" href="shop.html?cat=suits"><div class="tile tile--black" data-art="suit"></div><span class="cat-label"><span data-i18n="cat.suits"></span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
-          <a class="cat-tile" href="shop.html?cat=dresses"><div class="tile tile--ivory" data-art="dress"></div><span class="cat-label"><span data-i18n="cat.dresses"></span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
-          <a class="cat-tile" href="shop.html?cat=afterwork"><div class="tile tile--espresso" data-art="slip"></div><span class="cat-label"><span data-i18n="cat.afterwork"></span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
-          <a class="cat-tile" href="shop.html?cat=skirts"><div class="tile tile--nude-soft" data-art="skirt"></div><span class="cat-label"><span data-i18n="cat.skirts"></span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
-          <a class="cat-tile" href="shop.html?cat=trousers"><div class="tile tile--camel" data-art="trousers"></div><span class="cat-label"><span data-i18n="cat.trousers"></span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
-          <a class="cat-tile" href="shop.html?cat=tops"><div class="tile tile--nude" data-art="top"></div><span class="cat-label"><span data-i18n="cat.tops"></span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
-          <a class="cat-tile" href="shop.html?cat=new"><div class="tile tile--black" data-art="dress"></div><span class="cat-label"><span data-i18n="cat.new"></span><svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- New in -->
-    <section class="section section--nude" aria-labelledby="new-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h2" id="new-title" data-i18n="home.newTitle"></h2>
-          <a class="link-arrow" href="shop.html?cat=new" data-i18n="home.viewAll"></a>
-        </div>
-        <div class="grid grid--4" id="new-in-grid"></div>
-      </div>
-    </section>
-
-    <!-- Brand story -->
-    <section class="split split--dark" aria-labelledby="story-title">
-      <div class="tile tile--nude" data-art="suit"></div>
-      <div class="split-text">
-        <p class="eyebrow" data-i18n="home.storyEyebrow"></p>
-        <h2 class="h2" id="story-title" data-i18n="home.storyTitle"></h2>
-        <p data-i18n="home.storyText"></p>
-        <a class="btn btn--outline-light" href="about.html" data-i18n="home.storyLink"></a>
-      </div>
-    </section>
-
-    <!-- After work -->
-    <section class="split split--reverse" aria-labelledby="after-title">
-      <div class="split-text">
-        <p class="eyebrow" data-i18n="home.afterEyebrow"></p>
-        <h2 class="h2" id="after-title" data-i18n="home.afterTitle"></h2>
-        <p data-i18n="home.afterText"></p>
-        <a class="btn btn--dark" href="shop.html?cat=afterwork" data-i18n="home.afterCta"></a>
-      </div>
-      <div class="tile tile--espresso" data-art="slip"></div>
-    </section>
-
-    <!-- Values -->
-    <section class="section" aria-label="ROZA">
-      <div class="container values">
-        <div class="value"><div class="value-mark"></div><h3 data-i18n="home.val1Title"></h3><p data-i18n="home.val1Text"></p></div>
-        <div class="value"><div class="value-mark"></div><h3 data-i18n="home.val2Title"></h3><p data-i18n="home.val2Text"></p></div>
-        <div class="value"><div class="value-mark"></div><h3 data-i18n="home.val3Title"></h3><p data-i18n="home.val3Text"></p></div>
-      </div>
-    </section>
-
-    <!-- Social -->
-    <section class="section section--nude center" aria-labelledby="social-title">
-      <div class="container">
-        <h2 class="h2" id="social-title" data-i18n="home.socialTitle"></h2>
-        <p class="muted" data-i18n="home.socialText"></p>
-        <div class="social-strip" aria-hidden="true">
-          <div class="tile tile--black" data-art="blazer"></div>
-          <div class="tile tile--nude" data-art="dress"></div>
-          <div class="tile tile--ivory" data-art="top"></div>
-          <div class="tile tile--espresso" data-art="slip"></div>
-          <div class="tile tile--camel" data-art="trousers"></div>
-          <div class="tile tile--nude" data-art="skirt"></div>
-        </div>
-        <div class="social-cta">
-          <a class="btn btn--dark" href="https://www.instagram.com/rozathelabel/" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/></svg>Instagram
-          </a>
-          <a class="btn btn--outline" href="https://www.tiktok.com/@rozathelabel" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 3.5v11.2a3.8 3.8 0 1 1-3.8-3.8"/><path d="M14 3.5c.4 2.6 2.2 4.4 5 4.6"/></svg>TikTok
-          </a>
-        </div>
-      </div>
+  <main id="main" class="home">
+    <section class="lux-hero" aria-labelledby="hero-title">
+      <p class="eyebrow" data-i18n="home.heroEyebrow"></p>
+      <h1 id="hero-title" data-i18n="home.heroTitle"></h1>
+      <p class="lux-hero-sub" data-i18n="home.statement"></p>
+      <a class="btn btn--dark" href="shop.html?cat=new" data-i18n="home.heroCta"></a>
     </section>
   </main>
 
